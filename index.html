@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Toxic</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rubik+Moonrocks&display=swap');
+
+        body {
+            background-image: url('batman.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            text-align: center;
+            color: #ffd700;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            font-size: 50px;
+            cursor: pointer;
+            margin-top: 100px;
+            font-family: 'Rubik Moonrocks', cursive;
+            text-transform: uppercase;
+            display: block;
+        }
+
+        #toxic {
+            background-color: #333;
+            font-family: 'Press Start 2P', cursive;
+            color: red;
+            display: inline-block;
+            margin-top: 10px;
+            width: 250px;
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        #toxic:hover {
+            position: relative;
+            bottom: 5px;
+            right: 5px;
+            background-color: #515151;
+        }
+
+        #message {
+            font-size: 25px;
+            margin-top: 10px;
+            color: #ffffff;
+            font-family: 'Rubik Moonrocks', cursive;
+        }
+
+        #birthday-content {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .frames {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .frame {
+            width: 250px;
+            height: 250px;
+            background-color: #333;
+            border: 5px solid #ffd700;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.3s;
+            color: #ffd700;
+            overflow: hidden;
+            border-radius: 15px;
+        }
+
+        /* Special styling for the last frame */
+        .frame:last-child {
+            width: 570px;
+            height: 140px;
+        }
+
+        .frame:hover {
+            transform: scale(1.1);
+        }
+
+        .frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .emoticon {
+            position: absolute;
+            font-size: 40px;
+            opacity: 0;
+            transition: opacity 0.5s, transform 0.5s;
+        }
+
+        .message {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #ffd700;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            padding: 10px;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="birthday-text">HAPPY BIRTHDAY <br><span id="toxic">TOXIC</span></h1>
+    <p id="message">
+        Happy Birthday, Toxic! ❤️ <br><br>
+
+        Hey Toxic,<br><br>
+
+        It’s your special day, and I want to take a moment to tell you how much you mean to me. 
+        I know I can be difficult sometimes—stubborn, moody, and even a little childish. 
+        I know I act like I don’t need you, that I’m fine on my own, but trust me, that’s not true at all. 
+        The truth is, I can’t imagine my life without you. 
+        You’ve been there for me in ways no one else has, and I appreciate you more than I can ever put into words.<br><br>
+
+        I need you to understand me, really understand me. 
+        I know I don’t always say things the way I should. 
+        Sometimes, I keep things inside when I should just tell you. 
+        Other times, I act distant, not because I don’t care, 
+        but because I don’t know how to express what’s going on in my head. 
+        But no matter what, you are someone I never want to lose. 
+        Even when I’m at my worst, even when I push you away, deep down, I always want you to stay.<br><br>
+
+        You have no idea how much of a difference you make in my life. 
+        Your presence, your words, your understanding—it all means so much to me. 
+        You always know when something’s wrong, even when I try to hide it. 
+        You listen, even when I don’t make sense. 
+        You somehow manage to make me laugh, even on my worst days. 
+        And that’s something not everyone can do.<br><br>
+
+        I know I can be frustrating at times. 
+        I get annoyed easily, I overthink, and I don’t always show how much I appreciate you. 
+        But the truth is, I do. 
+        I appreciate you more than I could ever say. 
+        Every little thing you do, even the things you think I don’t notice, I do. 
+        And they mean the world to me.<br><br>
+
+        Toxic, you are not just someone I talk to—you are my safe space. 
+        With you, I don’t have to pretend. 
+        I don’t have to be perfect or have everything figured out. 
+        You accept me as I am, and that’s something I will always be grateful for. 
+        I know I don’t always make things easy, but I need you to see through all of that. 
+        I need you to know that, despite my moods and my childish ways, 
+        I care about you more than anything.<br><br>
+
+        On your birthday, I just want you to know that I’ll always be here, no matter what. 
+        Through every high and low, through every small fight or misunderstanding, nothing will ever change. 
+        You’re stuck with me, whether you like it or not. <br><br>
+
+        I hope this year brings you everything you deserve—happiness, success, and all the good things in life. 
+        I’ll always be cheering for you, supporting you, and reminding you that you are capable of amazing things.<br><br>
+
+        So, Happy Birthday, Toxic! I hope you have the best day ever, because if anyone deserves it, it’s you.<br><br>
+
+         ~Surbhi
+    </p>
+
+    <div id="birthday-content">
+        <div class="frames" id="frames-container"></div>
+    </div>
+
+    <script>
+        document.getElementById("birthday-text").addEventListener("click", function () {
+            launchConfetti();
+            setTimeout(() => {
+                document.getElementById("birthday-content").style.display = "block";
+            }, 1000);
+        });
+
+        function showDetails(frame) {
+            let emoticon = frame.querySelector(".emoticon");
+            let msg = frame.querySelector(".message");
+            let img = frame.querySelector("img");
+
+            emoticon.style.opacity = "1";
+            emoticon.style.transform = "scale(1.5)";
+
+            setTimeout(() => {
+                emoticon.style.opacity = "0";
+                emoticon.style.transform = "scale(1)";
+                img.style.display = "none";
+                msg.style.opacity = "1";
+            }, 2000);
+        }
+
+        function launchConfetti() {
+            const confettiSymbols = ['❤', '🤍', '★', '⚡', '🦇', '🎶', '🔥', '🎉', '🌟', '🎈', '🦋', '💥', '💫', '🥳', '🎀', '🎊', '🎵'];
+
+            for (let i = 0; i < 250; i++) {
+                let confetti = document.createElement("div");
+                confetti.style.position = "absolute";
+                confetti.style.left = Math.random() * window.innerWidth + "px";
+                confetti.style.top = "0px";
+                confetti.style.fontSize = "20px";
+                confetti.style.color = "#ffffff";
+                confetti.innerHTML = confettiSymbols[Math.floor(Math.random() * confettiSymbols.length)];
+                document.body.appendChild(confetti);
+
+                let animation = confetti.animate([
+                    { transform: `translateY(${window.innerHeight}px) rotate(${Math.random() * 360}deg)` }
+                ], {
+                    duration: Math.random() * 4000 + 4000,
+                    easing: "linear",
+                    iterations: 1
+                });
+
+                animation.onfinish = () => confetti.remove();
+            }
+        }
+
+        const images = [
+            "image.jpg", "image1.jpg", "image2.jpg", "image3.jpg", "image4.jpg", "image5.jpg"
+        ];
+        const messages = [
+            `I don't want to lose you, even when I'm not alive.
+
+I want to be with you all the time, whether it's day or night.`,
+            `Always eager to tell you how much I miss you,
+
+Ready to face all the problems, even if they kill me.`,
+            `I should tell you—the only thing I want from you
+
+Is to be with me forever, even when our lives turn blue.`,
+            `Keep your eyes on me always, even if I tell you to leave,
+
+Like Batman stays with his love—that's how I want you to be with me.`,
+            `Was I asking too much, or did it make you shrink down?
+
+Or are you ready to be with me forever and wear the crown?`,
+            `I adore you so, so freaking much that even with my last breath,
+
+I’d want to smell you—then embrace my peaceful death.`
+        ];
+
+        let framesContainer = document.getElementById("frames-container");
+
+        for (let i = 0; i < 6; i++) {
+            let frame = document.createElement("div");
+            frame.className = "frame";
+            if (i === 5) frame.style.width = "570px", frame.style.height = "140px";  // Only last frame is resized
+
+            frame.innerHTML = `
+                <img src="${images[i]}" alt="Frame Image">
+                <div class="emoticon">🦇</div>
+                <div class="message">${messages[i]}</div>
+            `;
+            frame.onclick = () => showDetails(frame);
+            framesContainer.appendChild(frame);
+        }
+    </script>
+</body>
+
+</html>
+
